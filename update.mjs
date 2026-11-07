@@ -4,7 +4,7 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 
-const API_KEY = process.env.ANTHROPIC_API_KEY;
+const API_KEY = process.env.ANTHROPIC_API_KEY?.trim();
 if (!API_KEY) throw new Error("Walang ANTHROPIC_API_KEY. Ilagay ito sa GitHub Secrets.");
 
 const MODEL = "claude-sonnet-5-5";
@@ -50,7 +50,13 @@ async function ask() {
         messages,
       }),
     });
-    if (!res.ok) throw new Error(`API error ${res.status}: ${await res.text()}`);
+    if (!res.ok) {
+      const details = await res.text();
+      if (res.status === 401) {
+        throw new Error("Hindi tinanggap ng Anthropic ang ANTHROPIC_API_KEY. Palitan ang GitHub Secret ng isang aktibo at valid na Anthropic API key.");
+      }
+      throw new Error(`API error ${res.status}: ${details}`);
+    }
     const data = await res.json();
     if (data.stop_reason !== "pause_turn") {
       return data.content.filter(b => b.type === "text").map(b => b.text).join("");
