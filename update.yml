@@ -20,12 +20,12 @@ jobs:
           node-version: 20
       - name: Suriin ang API key
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: test -n "$ANTHROPIC_API_KEY" || (echo "::error::Missing GitHub Secret ANTHROPIC_API_KEY" && exit 1)
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: test -n "$OPENAI_API_KEY" || (echo "::error::Missing GitHub Secret OPENAI_API_KEY" && exit 1)
       - name: Kunin ang bagong datos
         run: node update.mjs
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - name: I-save kung may nagbago
         run: |
           git config user.name "fuel-bot"

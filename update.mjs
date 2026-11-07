@@ -1,13 +1,13 @@
 // update.mjs
 // Kinukuha ang pinakabagong lingguhang adjustment ng DOE at isinusulat sa data.json.
-// Kailangan: Node 18 pataas at ang environment variable na ANTHROPIC_API_KEY.
+// Kailangan: Node 18 pataas at ang environment variable na OPENAI_API_KEY.
 
 import { readFile, writeFile } from "node:fs/promises";
 
-const API_KEY = process.env.ANTHROPIC_API_KEY?.trim();
-if (!API_KEY) throw new Error("Walang ANTHROPIC_API_KEY. Ilagay ito sa GitHub Secrets.");
+const API_KEY = process.env.OPENAI_API_KEY?.trim();
+if (!API_KEY) throw new Error("Walang OPENAI_API_KEY. Ilagay ito sa GitHub Secrets.");
 
-const MODEL = "claude-sonnet-5-5";
+const MODEL = "gpt-4o-mini";
 const MONTHS = ["Ene", "Peb", "Mar", "Abr", "May", "Hun", "Hul", "Ago", "Set", "Okt", "Nob", "Dis"];
 const FUELS = ["gasoline", "diesel", "kerosene"];
 
@@ -34,36 +34,35 @@ Reply with ONLY a JSON object and no other text, in exactly this shape:
 When forecast is not null it looks like {"date":"YYYY-MM-DD","gasoline":0,"diesel":0,"kerosene":0}.`;
 
 async function ask() {
-  const messages = [{ role: "user", content: prompt }];
-  for (let i = 0; i < 4; i++) {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": API_KEY,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 2000,
-        tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 5 }],
-        messages,
-      }),
-    });
-    if (!res.ok) {
-      const details = await res.text();
-      if (res.status === 401) {
-        throw new Error("Hindi tinanggap ng Anthropic ang ANTHROPIC_API_KEY. Palitan ang GitHub Secret ng isang aktibo at valid na Anthropic API key.");
-      }
-      throw new Error(`API error ${res.status}: ${details}`);
+  const res = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      input: prompt,
+      max_output_tokens: 2000,
+      tools: [{ type: "web_search_preview" }],
+    }),
+  });
+  if (!res.ok) {
+    const details = await res.text();
+    if (res.status === 401) {
+      throw new Error("Hindi tinanggap ng OpenAI ang OPENAI_API_KEY. Palitan ang GitHub Secret ng isang aktibo at valid na OpenAI API key.");
     }
-    const data = await res.json();
-    if (data.stop_reason !== "pause_turn") {
-      return data.content.filter(b => b.type === "text").map(b => b.text).join("");
-    }
-    messages.push({ role: "assistant", content: data.content });
+    throw new Error(`API error ${res.status}: ${details}`);
   }
-  throw new Error("Masyadong mahaba ang paghahanap.");
+  const data = await res.json();
+  if (typeof data.output_text === "string") return data.output_text;
+  const text = (data.output || [])
+    .flatMap(item => item.content || [])
+    .filter(item => item.type === "output_text")
+    .map(item => item.text)
+    .join("");
+  if (!text) throw new Error("Walang text na sagot mula sa OpenAI.");
+  return text;
 }
 
 const text = await ask();
