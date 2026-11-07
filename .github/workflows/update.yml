@@ -18,6 +18,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Suriin ang API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: test -n "$ANTHROPIC_API_KEY" || (echo "::error::Missing GitHub Secret ANTHROPIC_API_KEY" && exit 1)
       - name: Kunin ang bagong datos
         run: node update.mjs
         env:
