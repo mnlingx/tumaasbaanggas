@@ -1,0 +1,30 @@
+name: Update fuel data
+
+on:
+  schedule:
+    - cron: "0 10 * * 1"   # Lunes, 6:00 PM oras ng Pilipinas (DOE anunsyo)
+    - cron: "0 0 * * 2"    # Martes, 8:00 AM oras ng Pilipinas
+    - cron: "0 11 * * 5"   # Biyernes, 7:00 PM oras ng Pilipinas (tantya para sa susunod na linggo)
+  workflow_dispatch:       # para mapatakbo mo ito nang mano-mano
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Kunin ang bagong datos
+        run: node update.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: I-save kung may nagbago
+        run: |
+          git config user.name "fuel-bot"
+          git config user.email "fuel-bot@users.noreply.github.com"
+          git add data.json
+          git diff --staged --quiet || (git commit -m "Update fuel data" && git push)
