@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tumaas na ba ang gas?</title>
+<style>
+:root{--bg:#f1f4f8;--ink:#0d1b2a;--mute:#51607a;--line:#cbd5e1;--surface:#ffffff;--up:#d62839;--down:#0f7a55;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1322;--ink:#eef3fa;--mute:#9db0cc;--line:#2a3a55;--surface:#111e33;--up:#ff5b6b;--down:#3ddc97;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1322;--ink:#eef3fa;--mute:#9db0cc;--line:#2a3a55;--surface:#111e33;--up:#ff5b6b;--down:#3ddc97;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:20px 20px 40px;text-align:center}
+.site{color:var(--mute);font-size:.95rem;margin:0}
+.q{margin:9vh 0 0;font-size:1.2rem;color:var(--mute)}
+.answer{margin:.05em 0 .1em;font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Black",sans-serif;font-weight:900;font-size:clamp(6rem,26vw,13rem);line-height:.95;color:var(--ink)}
+.answer.up{color:var(--up)}.answer.down{color:var(--down)}
+.lead{font-size:1.15rem;margin:0 0 .25rem}
+.week{color:var(--mute);margin:0}
+.board{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2rem;border:2px solid var(--ink);background:var(--surface)}
+.cell{padding:16px 6px}
+.cell+.cell{border-left:1px solid var(--line)}
+.fuel{font-weight:700;margin:0}
+.amt{font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Black",sans-serif;font-size:clamp(1.4rem,6vw,2.2rem);margin:.15rem 0 0;line-height:1.1}
+.cell.up .amt,.cell.up .dir{color:var(--up)}.cell.down .amt,.cell.down .dir{color:var(--down)}
+.dir{font-size:.9rem;margin:0}
+.note{color:var(--mute);font-size:.85rem;margin:.75rem 0 0}
+.next{margin-top:2rem;padding:14px 16px;border:1px dashed var(--line);text-align:left}
+.next h2{font-size:1rem;margin:0 0 .25rem}
+.next p{margin:0;font-size:.95rem}
+.news{margin-top:2.25rem;text-align:left}
+.news h2{font-size:1.05rem;margin:0 0 .5rem}
+.news ul{list-style:none;margin:0;padding:0}
+.news li{border-top:1px solid var(--line);padding:.7rem 0}
+.news a{color:var(--ink);font-weight:600;text-decoration-thickness:1px;text-underline-offset:3px}
+.news a:focus-visible{outline:3px solid var(--down);outline-offset:3px}
+.news span{display:block;color:var(--mute);font-size:.85rem}
+footer{margin-top:2rem;color:var(--mute);font-size:.8rem}
+</style>
+</head>
+<body>
+<main>
+  <p class="site">tumaasnabaanggas.com</p>
+  <p class="q">Tumaas na ba ang gas ngayong linggo?</p>
+  <h1 class="answer" id="answer">…</h1>
+  <p class="lead" id="lead"></p>
+  <p class="week" id="week"></p>
+
+  <section class="board" id="board" aria-label="Pagbabago sa presyo kada litro"></section>
+  <p class="note">Ito ang pinahihintulutang pagbabago ng DOE kada litro. Maaaring bahagyang magkaiba ang aktwal na presyo ng bawat kumpanya.</p>
+
+  <section class="next" id="next"></section>
+
+  <section class="news">
+    <h2>Basahin ang balita</h2>
+    <ul id="news"></ul>
+  </section>
+
+  <footer id="foot"></footer>
+</main>
+
+<script>
+/* Pang-backup lang ito. Ang tunay na datos ay galing sa data.json, na ina-update ng script. */
+const FALLBACK = {
+  updated: "Nob 7, 2026",
+  week: "Nob 3–9, 2026",
+  headlineFuel: "gasoline",
+  current: { gasoline: 3.50, diesel: -1.00, kerosene: -1.90 },
+  forecast: { date: "Nob 10", gasoline: -14, diesel: -5, kerosene: -5.20 },
+  news: [
+    { source: "Rappler", title: "Tataas ang gasolina sa Nob 3; bababa ang diesel at kerosene", url: "https://www.rappler.com/business/fuel-prices-adjustments-november-4-2026/" },
+    { source: "GMA News", title: "Gasolina pataas, diesel at kerosene pababa ngayong linggo", url: "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/" },
+    { source: "BusinessMirror", title: "DOE: mixed ang galaw ng presyo, may rollback ang diesel at kerosene", url: "https://businessmirror.com.ph/2026/11/02/gas-price-up-diesel-kerosene-down-this-week/" },
+    { source: "GMA News", title: "Malaking rollback, tinatayang mangyayari sa susunod na linggo", url: "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/" }
+  ]
+};
+
+const NAMES = { gasoline: "Gasolina", diesel: "Diesel", kerosene: "Kerosene" };
+const peso = n => "₱" + Math.abs(n).toFixed(2);
+const sign = n => (n > 0 ? "+" : n < 0 ? "−" : "");
+const state = n => (n > 0 ? "up" : n < 0 ? "down" : "same");
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function render(DATA) {
+const head = DATA.current[DATA.headlineFuel];
+const isUp = head > 0;
+const answer = document.getElementById("answer");
+answer.textContent = isUp ? "OO" : "HINDI";
+answer.className = "answer " + (isUp ? "up" : "down");
+document.getElementById("lead").textContent = head > 0
+  ? NAMES[DATA.headlineFuel] + " ay tumaas ng " + peso(head) + " kada litro"
+  : head < 0
+    ? NAMES[DATA.headlineFuel] + " ay bumaba ng " + peso(head) + " kada litro"
+    : "Walang pagbabago sa " + NAMES[DATA.headlineFuel].toLowerCase();
+document.getElementById("week").textContent = "Linggo ng " + DATA.week;
+
+const board = document.getElementById("board");
+Object.keys(NAMES).forEach(k => {
+  const v = DATA.current[k];
+  const c = el("div", "cell " + state(v));
+  c.appendChild(el("p", "fuel", NAMES[k]));
+  c.appendChild(el("p", "amt", sign(v) + peso(v)));
+  c.appendChild(el("p", "dir", v > 0 ? "▲ Tumaas" : v < 0 ? "▼ Bumaba" : "Walang galaw"));
+  board.appendChild(c);
+});
+
+const f = DATA.forecast;
+const next = document.getElementById("next");
+next.hidden = !f;
+if (f) {
+next.appendChild(el("h2", "", "Sa susunod na Martes (" + f.date + "): tantya lang"));
+next.appendChild(el("p", "",
+  "Gasolina " + sign(f.gasoline) + peso(f.gasoline) + ", diesel " + sign(f.diesel) + peso(f.diesel) +
+  ", kerosene " + sign(f.kerosene) + peso(f.kerosene) +
+  " kada litro, batay sa unang apat na araw ng kalakalan. Hindi pa ito pinal; hintayin ang anunsyo ng DOE sa Lunes."));
+}
+
+const ul = document.getElementById("news");
+DATA.news.forEach(n => {
+  const li = el("li");
+  const a = el("a", "", n.title);
+  a.href = n.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  li.appendChild(a);
+  li.appendChild(el("span", "", n.source));
+  ul.appendChild(li);
+});
+
+document.getElementById("foot").textContent =
+  "Huling update: " + DATA.updated + ". Datos mula sa DOE at mga ulat ng balita. Hindi ito opisyal na website ng gobyerno.";
+}
+
+fetch("data.json", { cache: "no-store" })
+  .then(r => (r.ok ? r.json() : Promise.reject()))
+  .then(render)
+  .catch(() => render(FALLBACK));
+</script>
+</body>
+</html>

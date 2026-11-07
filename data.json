@@ -1,0 +1,38 @@
+{
+  "updated": "Nob 7, 2026",
+  "week": "Nob 3–9, 2026",
+  "headlineFuel": "gasoline",
+  "current": {
+    "gasoline": 3.5,
+    "diesel": -1,
+    "kerosene": -1.9
+  },
+  "forecast": {
+    "date": "Nob 10",
+    "gasoline": -14,
+    "diesel": -5,
+    "kerosene": -5.2
+  },
+  "news": [
+    {
+      "source": "Rappler",
+      "title": "Tataas ang gasolina sa Nob 3; bababa ang diesel at kerosene",
+      "url": "https://www.rappler.com/business/fuel-prices-adjustments-november-4-2026/"
+    },
+    {
+      "source": "GMA News",
+      "title": "Gasolina pataas, diesel at kerosene pababa ngayong linggo",
+      "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
+    },
+    {
+      "source": "BusinessMirror",
+      "title": "DOE: mixed ang galaw ng presyo, may rollback ang diesel at kerosene",
+      "url": "https://businessmirror.com.ph/2026/11/02/gas-price-up-diesel-kerosene-down-this-week/"
+    },
+    {
+      "source": "GMA News",
+      "title": "Malaking rollback, tinatayang mangyayari sa susunod na linggo",
+      "url": "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/"
+    }
+  ]
+}
