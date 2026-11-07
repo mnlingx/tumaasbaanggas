@@ -9,30 +9,30 @@
   },
   "forecast": {
     "date": "Nob 10",
-    "gasoline": -14,
-    "diesel": -5,
+    "gasoline": -13.5,
+    "diesel": -4.5,
     "kerosene": -5.2
   },
   "news": [
     {
-      "source": "Rappler",
-      "title": "Tataas ang gasolina sa Nob 3; bababa ang diesel at kerosene",
-      "url": "https://www.rappler.com/business/fuel-prices-adjustments-november-4-2026/"
-    },
-    {
-      "source": "GMA News",
-      "title": "Gasolina pataas, diesel at kerosene pababa ngayong linggo",
+      "source": "GMA News Online",
+      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene sa Nobyembre 3, 2026",
       "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
     },
     {
-      "source": "BusinessMirror",
-      "title": "DOE: mixed ang galaw ng presyo, may rollback ang diesel at kerosene",
-      "url": "https://businessmirror.com.ph/2026/11/02/gas-price-up-diesel-kerosene-down-this-week/"
+      "source": "Philstar.com",
+      "title": "Pagtaas ng presyo ng gasolina ng P3.50/L, pagbaba ng diesel at kerosene sa Nobyembre 3-9, 2026",
+      "url": "https://www.philstar.com/business/2026/11/03/2567361/price-tracker-oil-fuel-monitor-nov-3-9-2026"
     },
     {
-      "source": "GMA News",
-      "title": "Malaking rollback, tinatayang mangyayari sa susunod na linggo",
-      "url": "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/"
+      "source": "SunStar Davao",
+      "title": "Pagtaas ng presyo ng gasolina ng P3.50 para sa Nobyembre 3-9 sa Davao",
+      "url": "https://www.sunstar.com.ph/amp/story/davao/gasoline-prices-increase-by-p350-for-nov-3-9"
+    },
+    {
+      "source": "PhilNews",
+      "title": "Malaking rollback sa presyo ng langis inaasahan sa Nobyembre 10; gasolina maaaring bumaba ng P14 kada litro",
+      "url": "https://philnews.ph/2026/11/07/big-time-oil-price-rollback-expected-on-november-10-gasoline-may-drop-by-p14-per-liter/"
     }
   ]
 }
