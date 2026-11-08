@@ -7,16 +7,11 @@
     "diesel": -1,
     "kerosene": -1.9
   },
-  "forecast": {
-    "date": "Nob 10",
-    "gasoline": -14,
-    "diesel": -5,
-    "kerosene": -5.2
-  },
+  "forecast": null,
   "news": [
     {
       "source": "GMA News Online",
-      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene",
+      "title": "Pagtaas ng presyo ng gasolina; pagbaba ng presyo ng diesel at kerosene noong Nobyembre 3, 2026",
       "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
     },
     {
@@ -25,14 +20,14 @@
       "url": "https://www.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/"
     },
     {
-      "source": "Philstar.com",
-      "title": "Pagtaas ng presyo ng gasolina ng P3 kada litro simula Nobyembre 3",
-      "url": "https://qa.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/amp"
+      "source": "Sunstar Davao",
+      "title": "Pagtaas ng presyo ng gasolina ng P3.50 para sa Nobyembre 3-9",
+      "url": "https://www.sunstar.com.ph/davao/gasoline-prices-increase-by-p350-for-nov-3-9"
     },
     {
-      "source": "Philstar.com",
-      "title": "Pagtaas ng presyo ng gasolina ng P3 kada litro simula Nobyembre 3",
-      "url": "https://qa.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/amp/"
+      "source": "Daily Tribune",
+      "title": "Pagtaas ng presyo ng gasolina ng P3.50 amid oil risks",
+      "url": "https://tribune.net.ph/amp/story/2026/11/02/gasoline-hike-hits-p350-amid-oil-risks"
     }
   ]
 }
