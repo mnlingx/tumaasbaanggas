@@ -1,5 +1,5 @@
 {
-  "updated": "Nob 7, 2026",
+  "updated": "Nob 8, 2026",
   "week": "Nob 3–9, 2026",
   "headlineFuel": "gasoline",
   "current": {
@@ -9,30 +9,30 @@
   },
   "forecast": {
     "date": "Nob 10",
-    "gasoline": -13.5,
-    "diesel": -4.5,
+    "gasoline": -14,
+    "diesel": -5,
     "kerosene": -5.2
   },
   "news": [
     {
       "source": "GMA News Online",
-      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene sa Nobyembre 3, 2026",
+      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene",
       "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
     },
     {
       "source": "Philstar.com",
-      "title": "Pagtaas ng presyo ng gasolina ng P3.50/L, pagbaba ng diesel at kerosene sa Nobyembre 3-9, 2026",
-      "url": "https://www.philstar.com/business/2026/11/03/2567361/price-tracker-oil-fuel-monitor-nov-3-9-2026"
+      "title": "Pagtaas ng presyo ng gasolina ng P3 kada litro simula Nobyembre 3",
+      "url": "https://www.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/"
     },
     {
-      "source": "SunStar Davao",
-      "title": "Pagtaas ng presyo ng gasolina ng P3.50 para sa Nobyembre 3-9 sa Davao",
-      "url": "https://www.sunstar.com.ph/amp/story/davao/gasoline-prices-increase-by-p350-for-nov-3-9"
+      "source": "Philstar.com",
+      "title": "Pagtaas ng presyo ng gasolina ng P3 kada litro simula Nobyembre 3",
+      "url": "https://qa.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/amp"
     },
     {
-      "source": "PhilNews",
-      "title": "Malaking rollback sa presyo ng langis inaasahan sa Nobyembre 10; gasolina maaaring bumaba ng P14 kada litro",
-      "url": "https://philnews.ph/2026/11/07/big-time-oil-price-rollback-expected-on-november-10-gasoline-may-drop-by-p14-per-liter/"
+      "source": "Philstar.com",
+      "title": "Pagtaas ng presyo ng gasolina ng P3 kada litro simula Nobyembre 3",
+      "url": "https://qa.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/amp/"
     }
   ]
 }
