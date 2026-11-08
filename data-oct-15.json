@@ -1,0 +1,23 @@
+{
+  "updated": "Okt 15, 2026",
+  "week": "Okt 13–19, 2026",
+  "headlineFuel": "gasoline",
+  "current": {
+    "gasoline": 1.56,
+    "diesel": -3.01,
+    "kerosene": 1.77
+  },
+  "forecast": null,
+  "news": [
+    {
+      "source": "Philstar.com",
+      "title": "Diesel bumaba nang mahigit piso tatlo; gasolina at kerosene tumaas",
+      "url": "https://www.philstar.com/business/2026/10/12/2562674/diesel-prices-drop-p3l-gasoline-kerosene-rise-over-p1l/amp/"
+    },
+    {
+      "source": "Top Gear Philippines",
+      "title": "Mixed ang presyo sa Oktubre 13 hanggang 19",
+      "url": "https://www.topgear.com.ph/news/industry-news/ph-fuel-price-update-october-13-19-2026-a2619-20261012"
+    }
+  ]
+}
