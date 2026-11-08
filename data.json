@@ -15,24 +15,19 @@
   },
   "news": [
     {
-      "source": "GMA News",
-      "title": "Mataas na rollback sa presyo ng gasolina, diesel, at kerosene sa susunod na linggo",
-      "url": "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/"
+      "source": "GMA News Online",
+      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene sa linggong ito",
+      "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
     },
     {
       "source": "Philippine News Agency",
-      "title": "Pagbaba ng presyo ng diesel dahil sa pagtaas ng global supply",
-      "url": "https://www.pna.gov.ph/article/diesel-prices-set-to-decline-anew-as-global-supply-rises"
-    },
-    {
-      "source": "Philippine News Agency",
-      "title": "Magkakaibang galaw ng presyo ng langis sa susunod na linggo",
+      "title": "Pagtaas at pagbaba ng presyo ng langis sa linggong ito",
       "url": "https://www.pna.gov.ph/article/mixed-oil-price-adjustments-set-tuesday"
     },
     {
-      "source": "GMA News",
-      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene sa susunod na linggo",
-      "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
+      "source": "GMA News Online",
+      "title": "Malalaking rollback sa presyo ng langis, inaasahan sa susunod na linggo",
+      "url": "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/"
     }
   ]
 }
