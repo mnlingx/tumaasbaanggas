@@ -34,6 +34,36 @@ function weekLabel(iso) {
   return am === bm ? `${MONTHS[am]} ${ad}–${bd}, ${by}` : `${MONTHS[am]} ${ad}–${MONTHS[bm]} ${bd}, ${by}`;
 }
 
+function canonicalNewsUrl(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+    url.hostname = url.hostname.replace(/^www\./, "").replace(/^qa\./, "");
+    url.pathname = url.pathname.replace(/\/amp\/?$/, "").replace(/\/$/, "");
+    url.search = "";
+    url.hash = "";
+    return url.toString();
+  } catch {
+    return "";
+  }
+}
+
+function trustedNewsUrl(rawUrl) {
+  try {
+    const host = new URL(rawUrl).hostname.replace(/^www\./, "").replace(/^qa\./, "");
+    return TRUSTED_DOMAINS.some(domain => host === domain || host.endsWith("." + domain));
+  } catch {
+    return false;
+  }
+}
+
+if (process.env.SELF_TEST) {
+  console.assert(
+    canonicalNewsUrl("https://qa.philstar.com/business/story/amp/") === "https://philstar.com/business/story",
+    "canonicalNewsUrl removes qa host and amp suffix"
+  );
+  process.exit(0);
+}
+
 const prompt = `Today is ${todayISO} (Philippine time). Use web search to find the Philippine Department of Energy's most recent weekly fuel price adjustments, per liter in pesos, for gasoline, diesel and kerosene. Rollbacks are negative numbers and increases are positive. Use the adjustment that took effect (or takes effect) on the most recent Tuesday, and give that Tuesday as weekStart. If the DOE has already published an estimate for the next Tuesday's adjustment (usually on Friday), include it as forecast, otherwise set forecast to null. Also pick up to 4 recent news articles about these adjustments from different Philippine outlets in these trusted domains only: ${TRUSTED_DOMAINS.join(", ")}. Include the outlet name, your own short headline in Filipino (do not copy the article's title), and the article's real URL from your search results.
 
 Reply with ONLY a JSON object and no other text, in exactly this shape:
@@ -96,8 +126,15 @@ const forecast = f && FUELS.every(k => ok(f[k])) && f.date > todayISO
   ? { date: label(f.date), gasoline: f.gasoline, diesel: f.diesel, kerosene: f.kerosene }
   : null;
 
+const seenNews = new Set();
 const news = (raw.news || [])
-  .filter(n => n && n.title && n.source && /^https:\/\//.test(n.url))
+  .filter(n => n && n.title && n.source && /^https:\/\//.test(n.url) && trustedNewsUrl(n.url))
+  .filter(n => {
+    const key = canonicalNewsUrl(n.url) || n.title.trim().toLowerCase();
+    if (seenNews.has(key)) return false;
+    seenNews.add(key);
+    return true;
+  })
   .slice(0, 4)
   .map(({ source, title, url }) => ({ source, title, url }));
 
