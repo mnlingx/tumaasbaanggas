@@ -15,7 +15,7 @@ const TRUSTED_DOMAINS = [
   "tribune.net.ph", "bworldonline.com", "businessmirror.com.ph",
   "powerphilippines.com", "topgear.com.ph", "pna.gov.ph", "sunstar.com.ph",
 ];
-const MONTHS = ["Ene", "Peb", "Mar", "Abr", "May", "Hun", "Hul", "Ago", "Set", "Okt", "Nob", "Dis"];
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const FUELS = ["gasoline", "diesel", "kerosene"];
 
 // Petsa ngayon sa oras ng Pilipinas (UTC+8)
