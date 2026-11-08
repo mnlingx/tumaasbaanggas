@@ -1,33 +1,38 @@
 {
-  "updated": "Nob 8, 2026",
-  "week": "Nob 3–9, 2026",
+  "updated": "Nov 8, 2026",
+  "week": "Nov 3–9, 2026",
   "headlineFuel": "gasoline",
   "current": {
     "gasoline": 3.5,
     "diesel": -1,
     "kerosene": -1.9
   },
-  "forecast": null,
+  "forecast": {
+    "date": "Nov 10",
+    "gasoline": -14,
+    "diesel": -5,
+    "kerosene": -5.2
+  },
   "news": [
     {
-      "source": "GMA News Online",
-      "title": "Pagtaas ng presyo ng gasolina; pagbaba ng presyo ng diesel at kerosene noong Nobyembre 3, 2026",
+      "source": "GMA News",
+      "title": "Mataas na rollback sa presyo ng gasolina, diesel, at kerosene sa susunod na linggo",
+      "url": "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/"
+    },
+    {
+      "source": "Philippine News Agency",
+      "title": "Pagbaba ng presyo ng diesel dahil sa pagtaas ng global supply",
+      "url": "https://www.pna.gov.ph/article/diesel-prices-set-to-decline-anew-as-global-supply-rises"
+    },
+    {
+      "source": "Philippine News Agency",
+      "title": "Magkakaibang galaw ng presyo ng langis sa susunod na linggo",
+      "url": "https://www.pna.gov.ph/article/mixed-oil-price-adjustments-set-tuesday"
+    },
+    {
+      "source": "GMA News",
+      "title": "Pagtaas ng presyo ng gasolina, pagbaba ng diesel at kerosene sa susunod na linggo",
       "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
-    },
-    {
-      "source": "Philstar.com",
-      "title": "Pagtaas ng presyo ng gasolina ng P3 kada litro simula Nobyembre 3",
-      "url": "https://www.philstar.com/business/2026/11/02/2567331/gasoline-prices-p3-liter-starting-november-3/"
-    },
-    {
-      "source": "Sunstar Davao",
-      "title": "Pagtaas ng presyo ng gasolina ng P3.50 para sa Nobyembre 3-9",
-      "url": "https://www.sunstar.com.ph/davao/gasoline-prices-increase-by-p350-for-nov-3-9"
-    },
-    {
-      "source": "Daily Tribune",
-      "title": "Pagtaas ng presyo ng gasolina ng P3.50 amid oil risks",
-      "url": "https://tribune.net.ph/amp/story/2026/11/02/gasoline-hike-hits-p350-amid-oil-risks"
     }
   ]
 }

@@ -4,8 +4,20 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 
-const API_KEY = process.env.OPENAI_API_KEY?.trim();
-if (!API_KEY) throw new Error("Walang OPENAI_API_KEY. Ilagay ito sa GitHub Secrets.");
+async function loadLocalEnv() {
+  let text = "";
+  try { text = await readFile(".env", "utf8"); } catch { return; }
+  for (const line of text.split(/\r?\n/)) {
+    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)=(.*)\s*$/);
+    if (!match || process.env[match[1]]) continue;
+    process.env[match[1]] = match[2].trim().replace(/^["']|["']$/g, "");
+  }
+}
+
+await loadLocalEnv();
+
+const API_KEY = (process.env.OPENAI_API_KEY || (process.env.SELF_TEST ? "test" : "")).trim();
+if (!API_KEY) throw new Error("Walang OPENAI_API_KEY. Ilagay ito sa .env locally or GitHub Secrets in deployment.");
 
 const MODEL = "gpt-4o-mini";
 const DATA_FILE = process.env.DATA_FILE || "data.json";
@@ -64,7 +76,7 @@ if (process.env.SELF_TEST) {
   process.exit(0);
 }
 
-const prompt = `Today is ${todayISO} (Philippine time). Use web search to find the Philippine Department of Energy's most recent weekly fuel price adjustments, per liter in pesos, for gasoline, diesel and kerosene. Rollbacks are negative numbers and increases are positive. Use the adjustment that took effect (or takes effect) on the most recent Tuesday, and give that Tuesday as weekStart. If the DOE has already published an estimate for the next Tuesday's adjustment (usually on Friday), include it as forecast, otherwise set forecast to null. Also pick up to 4 recent news articles about these adjustments from different Philippine outlets in these trusted domains only: ${TRUSTED_DOMAINS.join(", ")}. Include the outlet name, your own short headline in Filipino (do not copy the article's title), and the article's real URL from your search results.
+const prompt = `Today is ${todayISO} (Philippine time). Use web search to find the Philippine Department of Energy's most recent weekly fuel price adjustments, per liter in pesos, for gasoline, diesel and kerosene. Rollbacks are negative numbers and increases are positive. Use the adjustment that took effect (or takes effect) on the most recent Tuesday, and give that Tuesday as weekStart. Search separately for a forecast or estimate for the next Tuesday's adjustment from DOE, GMA, PNA, or another trusted Philippine outlet; these forecasts are often reported on Thursday, Friday, Saturday, or Sunday before the Tuesday adjustment. If a reliable forecast exists, include it as forecast with the next Tuesday's date and negative numbers for rollbacks; otherwise set forecast to null. Also pick up to 4 recent news articles about these adjustments from different Philippine outlets in these trusted domains only: ${TRUSTED_DOMAINS.join(", ")}. Include the outlet name, your own short headline in Filipino (do not copy the article's title), and the article's real URL from your search results.
 
 Reply with ONLY a JSON object and no other text, in exactly this shape:
 {"weekStart":"YYYY-MM-DD","current":{"gasoline":0,"diesel":0,"kerosene":0},"forecast":null,"news":[{"source":"","title":"","url":""}]}
