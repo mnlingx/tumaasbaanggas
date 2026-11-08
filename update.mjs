@@ -8,11 +8,18 @@ const API_KEY = process.env.OPENAI_API_KEY?.trim();
 if (!API_KEY) throw new Error("Walang OPENAI_API_KEY. Ilagay ito sa GitHub Secrets.");
 
 const MODEL = "gpt-4o-mini";
+const DATA_FILE = process.env.DATA_FILE || "data.json";
+const TRUSTED_DOMAINS = [
+  "doe.gov.ph", "gmanetwork.com", "inquirer.net", "philstar.com",
+  "rappler.com", "mb.com.ph", "abs-cbn.com", "manilatimes.net",
+  "tribune.net.ph", "bworldonline.com", "businessmirror.com.ph",
+  "powerphilippines.com", "topgear.com.ph", "pna.gov.ph", "sunstar.com.ph",
+];
 const MONTHS = ["Ene", "Peb", "Mar", "Abr", "May", "Hun", "Hul", "Ago", "Set", "Okt", "Nob", "Dis"];
 const FUELS = ["gasoline", "diesel", "kerosene"];
 
 // Petsa ngayon sa oras ng Pilipinas (UTC+8)
-const todayISO = new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
+const todayISO = process.env.TODAY_ISO || new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
 
 const label = iso => {
   const [, m, d] = iso.split("-").map(Number);
@@ -27,7 +34,7 @@ function weekLabel(iso) {
   return am === bm ? `${MONTHS[am]} ${ad}–${bd}, ${by}` : `${MONTHS[am]} ${ad}–${MONTHS[bm]} ${bd}, ${by}`;
 }
 
-const prompt = `Today is ${todayISO} (Philippine time). Use web search to find the Philippine Department of Energy's most recent weekly fuel price adjustments, per liter in pesos, for gasoline, diesel and kerosene. Rollbacks are negative numbers and increases are positive. Use the adjustment that took effect (or takes effect) on the most recent Tuesday, and give that Tuesday as weekStart. If the DOE has already published an estimate for the next Tuesday's adjustment (usually on Friday), include it as forecast, otherwise set forecast to null. Also pick up to 4 recent news articles about these adjustments from different Philippine outlets, each with the outlet name, your own short headline in Filipino (do not copy the article's title), and the article's real URL from your search results.
+const prompt = `Today is ${todayISO} (Philippine time). Use web search to find the Philippine Department of Energy's most recent weekly fuel price adjustments, per liter in pesos, for gasoline, diesel and kerosene. Rollbacks are negative numbers and increases are positive. Use the adjustment that took effect (or takes effect) on the most recent Tuesday, and give that Tuesday as weekStart. If the DOE has already published an estimate for the next Tuesday's adjustment (usually on Friday), include it as forecast, otherwise set forecast to null. Also pick up to 4 recent news articles about these adjustments from different Philippine outlets in the trusted domains, each with the outlet name, your own short headline in Filipino (do not copy the article's title), and the article's real URL from your search results.
 
 Reply with ONLY a JSON object and no other text, in exactly this shape:
 {"weekStart":"YYYY-MM-DD","current":{"gasoline":0,"diesel":0,"kerosene":0},"forecast":null,"news":[{"source":"","title":"","url":""}]}
@@ -44,7 +51,10 @@ async function ask() {
       model: MODEL,
       input: prompt,
       max_output_tokens: 2000,
-      tools: [{ type: "web_search_preview" }],
+      tools: [{
+        type: "web_search_preview",
+        filters: { allowed_domains: TRUSTED_DOMAINS },
+      }],
     }),
   });
   if (!res.ok) {
@@ -82,7 +92,7 @@ if (!(ageDays >= -1 && ageDays <= 9)) {
 }
 
 let old = {};
-try { old = JSON.parse(await readFile("data.json", "utf8")); } catch {}
+try { old = JSON.parse(await readFile(DATA_FILE, "utf8")); } catch {}
 
 const f = raw.forecast;
 const forecast = f && FUELS.every(k => ok(f[k])) && f.date > todayISO
@@ -103,5 +113,5 @@ const out = {
   news: news.length ? news : old.news || [],
 };
 
-await writeFile("data.json", JSON.stringify(out, null, 2) + "\n");
-console.log("Na-update ang data.json:\n", JSON.stringify(out, null, 2));
+await writeFile(DATA_FILE, JSON.stringify(out, null, 2) + "\n");
+console.log(`Na-update ang ${DATA_FILE}:\n`, JSON.stringify(out, null, 2));
