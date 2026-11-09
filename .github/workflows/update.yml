@@ -2,9 +2,9 @@ name: Update fuel data
 
 on:
   schedule:
-    - cron: "0 10 * * 1"   # Lunes, 6:00 PM oras ng Pilipinas (DOE anunsyo)
-    - cron: "0 0 * * 2"    # Martes, 8:00 AM oras ng Pilipinas
-    - cron: "0 11 * * 5"   # Biyernes, 7:00 PM oras ng Pilipinas (tantya para sa susunod na linggo)
+    - cron: "12 0 * * 0"   # Monday 8:12AM
+    - cron: "12 16 * * 1"    # Tuesday 12:12AM
+    - cron: "12 12 * * 5"   # Friday 8:12PM
   workflow_dispatch:       # para mapatakbo mo ito nang mano-mano
 
 permissions:
