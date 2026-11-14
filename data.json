@@ -1,5 +1,5 @@
 {
-  "updated": "Nov 10, 2026",
+  "updated": "Nov 14, 2026",
   "week": "Nov 10–16, 2026",
   "headlineFuel": "gasoline",
   "current": {
@@ -7,27 +7,32 @@
     "diesel": -4.1,
     "kerosene": -3.7
   },
-  "forecast": null,
+  "forecast": {
+    "date": "Nov 17",
+    "gasoline": -3,
+    "diesel": -4,
+    "kerosene": -5
+  },
   "news": [
     {
-      "source": "Philippine News Agency",
-      "title": "Rollback ng presyo ng gasolina at diesel, epektibo ngayong linggo",
-      "url": "https://www.pna.gov.ph/article/up-to-p17l-for-gasoline-p4l-for-diesel-rollback-set-nov-10"
-    },
-    {
       "source": "GMA News Online",
-      "title": "Malaking rollback sa presyo ng langis, epektibo ngayong linggo",
+      "title": "Malaking rollback sa presyo ng gasolina, diesel, at kerosene, ipatutupad sa Nobyembre 10",
       "url": "https://www.gmanetwork.com/news/money/companies/1008830/oil-price-rollback-for-gasoline-diesel-and-kerosene-effective-tuesday-nov-9/story/"
     },
     {
       "source": "Philippine News Agency",
-      "title": "Pagbaba ng presyo ng diesel, inaasahan sa susunod na linggo",
-      "url": "https://www.pna.gov.ph/article/diesel-prices-set-to-decline-anew-as-global-supply-rises"
+      "title": "Hanggang P17/L na rollback sa gasolina, P4/L sa diesel, ipatutupad sa Nobyembre 10",
+      "url": "https://www.pna.gov.ph/article/up-to-p17l-for-gasoline-p4l-for-diesel-rollback-set-nov-10"
     },
     {
       "source": "GMA News Online",
-      "title": "Pagtaas ng presyo ng gasolina, diesel, at kerosene, inaasahan sa susunod na linggo",
-      "url": "https://www.gmanetwork.com/news/money/economy/1008494/pump-price-rollbacks-of-up-to-p14-per-liter-seen-next-week/story/"
+      "title": "Isa pang malaking rollback sa presyo ng langis, inaasahan sa susunod na linggo",
+      "url": "https://www.gmanetwork.com/news/money/economy/1009356/another-major-fuel-rollback-seen-next-week/story/?order=1&top_picks="
+    },
+    {
+      "source": "GMA News Online",
+      "title": "Gasoline pump prices up; diesel and kerosene down November 3, 2026",
+      "url": "https://www.gmanetwork.com/news/money/economy/1007990/gasoline-pump-prices-up-diesel-and-kerosene-down-november-3-2026/story/"
     }
   ]
 }
