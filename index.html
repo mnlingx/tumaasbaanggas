@@ -26,27 +26,19 @@
   <p class="update" id="foot-update"></p>
   <footer>
     <div class="footer-inner">
-      <div class="footer-links">
+      <nav class="footer-links" aria-label="Footer">
         <a href="about.html">About</a>
         <a href="privacy.html">Privacy Policy</a>
-        <span>Copyright 2026 Tumaas ba ang gas?</span>
-      </div>
-      <div class="donations" aria-label="Donations">
-        <p>Donations are welcome to keep the website yours truly</p>
-        <div class="donation-links">
-          <button type="button" data-qr-title="PayPal" data-qr-src="assets/paypal-qr.png">PayPal</button>
-          <button type="button" data-qr-title="GCash" data-qr-src="assets/gcash-qr.png">GCash</button>
-        </div>
-      </div>
+      </nav>
+      <p>Copyright 2026 Tumaas ba ang gas?</p>
     </div>
   </footer>
 </main>
-<div class="modal-backdrop" id="qr-modal" hidden>
-  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
-    <button class="modal-close" id="qr-modal-close" type="button" aria-label="Isara ang QR code">×</button>
-    <h2 id="qr-modal-title"></h2>
-    <p>I-scan ang QR code para mag-donate.</p>
-    <img class="qr-image" id="qr-modal-image" src="" alt="">
+<div class="modal-backdrop" id="liter-modal" hidden>
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="liter-modal-title">
+    <button class="modal-close" id="liter-modal-close" type="button" aria-label="Isara ang paliwanag">×</button>
+    <h2 id="liter-modal-title">Price per liter</h2>
+    <p>Ang bawat presyong nakalista ay estimated na dagdag o bawas sa bawat isang litro ng gasolina, diesel, o kerosene.</p>
   </section>
 </div>
 

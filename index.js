@@ -43,16 +43,25 @@ function render(DATA) {
 
   const f = DATA.forecast;
   const next = document.getElementById("next");
+  const news = document.querySelector(".news");
+  news.querySelector(".info-trigger")?.remove();
+  const info = el("button", "info-trigger", "i");
+  info.type = "button";
+  info.setAttribute("aria-label", "Ano ang ibig sabihin ng halaga kada litro?");
+  info.addEventListener("click", openLiterModal);
   next.replaceChildren();
   next.hidden = !f;
   if (f) {
     const heading = el("h2", "", "Sa susunod na Martes, " + f.date);
     heading.appendChild(document.createTextNode(": estimate lang"));
     next.appendChild(heading);
+    next.appendChild(info);
     next.appendChild(el("p", "",
       "Gasolina " + sign(f.gasoline) + peso(f.gasoline) + ", diesel " + sign(f.diesel) + peso(f.diesel) +
       ", kerosene " + sign(f.kerosene) + peso(f.kerosene) +
       " kada litro, according sa unang apat na araw ng oil trading. Hindi pa ito final; hintayin ang announcement ng DOE sa Lunes."));
+  } else {
+    news.appendChild(info);
   }
 
   const ul = document.getElementById("news");
@@ -70,30 +79,50 @@ function render(DATA) {
     "Last updated: " + DATA.updated + ". Data mula sa DOE at mga ulat ng balita. Hindi ito official na website ng gobyerno.";
 }
 
+const literModal = document.getElementById("liter-modal");
+const literModalClose = document.getElementById("liter-modal-close");
+function openLiterModal() {
+  literModal.hidden = false;
+  literModalClose.focus();
+}
+function closeLiterModal() {
+  literModal.hidden = true;
+}
+if (literModal) {
+  literModalClose.addEventListener("click", closeLiterModal);
+  literModal.addEventListener("click", event => {
+    if (event.target === literModal) closeLiterModal();
+  });
+}
+
 const qrModal = document.getElementById("qr-modal");
-const qrModalClose = document.getElementById("qr-modal-close");
-const qrModalTitle = document.getElementById("qr-modal-title");
-const qrModalImage = document.getElementById("qr-modal-image");
-function openQrModal(title, src) {
-  qrModalTitle.textContent = title;
-  qrModalImage.src = src;
-  qrModalImage.alt = title + " QR code";
-  qrModal.hidden = false;
-  qrModalClose.focus();
+if (qrModal) {
+  const qrModalClose = document.getElementById("qr-modal-close");
+  const qrModalTitle = document.getElementById("qr-modal-title");
+  const qrModalImage = document.getElementById("qr-modal-image");
+  function closeQrModal() {
+    qrModal.hidden = true;
+    qrModalImage.removeAttribute("src");
+  }
+  qrModalClose.addEventListener("click", closeQrModal);
+  qrModal.addEventListener("click", event => {
+    if (event.target === qrModal) closeQrModal();
+  });
+  document.querySelectorAll("[data-qr-src]").forEach(button => {
+    button.addEventListener("click", () => {
+      qrModalTitle.textContent = button.dataset.qrTitle;
+      qrModalImage.src = button.dataset.qrSrc;
+      qrModalImage.alt = button.dataset.qrTitle + " QR code";
+      qrModal.hidden = false;
+      qrModalClose.focus();
+    });
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !qrModal.hidden) closeQrModal();
+  });
 }
-function closeQrModal() {
-  qrModal.hidden = true;
-  qrModalImage.removeAttribute("src");
-}
-qrModalClose.addEventListener("click", closeQrModal);
-qrModal.addEventListener("click", event => {
-  if (event.target === qrModal) closeQrModal();
-});
-document.querySelectorAll("[data-qr-src]").forEach(button => {
-  button.addEventListener("click", () => openQrModal(button.dataset.qrTitle, button.dataset.qrSrc));
-});
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && !qrModal.hidden) closeQrModal();
+  if (event.key === "Escape" && literModal && !literModal.hidden) closeLiterModal();
 });
 
 async function loadData() {
@@ -109,4 +138,4 @@ async function loadData() {
   render(data);
 }
 
-loadData();
+if (document.getElementById("answer")) loadData();

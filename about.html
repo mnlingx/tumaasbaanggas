@@ -10,10 +10,8 @@
 </head>
 <body>
 <main>
-  <header class="topbar">
-    <a class="back" href="index.html">← Back to home</a>
+  <header>
     <p class="site">tumaas ba ang gas ngayong linggo?</p>
-    <span aria-hidden="true"></span>
   </header>
 
   <section class="about" aria-labelledby="about-title">
@@ -21,6 +19,13 @@
     <div class="copy">
       <p>Itong website ay ginawa para mabilis na malaman ang movement ng gas sa Pilipinas.</p>
       <p>Feedback? Send us an email to<br><a href="mailto:tumaasba@tumaasbaanggas.com">tumaasba@tumaasbaanggas.com</a></p>
+      <div class="donations" aria-label="Donations">
+        <p>Donations are welcome to keep the website yours truly.</p>
+        <div class="donation-links">
+          <button type="button" data-qr-title="PayPal" data-qr-src="assets/paypal-qr.png">PayPal</button>
+          <button type="button" data-qr-title="GCash" data-qr-src="assets/gcash-qr.png">GCash</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -35,5 +40,15 @@
     </div>
   </footer>
 </main>
+<div class="modal-backdrop" id="qr-modal" hidden>
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+    <button class="modal-close" id="qr-modal-close" type="button" aria-label="Isara ang QR code">×</button>
+    <h2 id="qr-modal-title"></h2>
+    <p>I-scan ang QR code para mag-donate.</p>
+    <img class="qr-image" id="qr-modal-image" src="" alt="">
+  </section>
+</div>
+
+<script src="index.js" defer></script>
 </body>
 </html>
