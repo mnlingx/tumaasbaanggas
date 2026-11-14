@@ -3,10 +3,8 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.45}
 .site{display:block;margin:0;text-align:center;font-size:.72rem;font-weight:400}
-.topbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
-.back{justify-self:start;color:var(--ink);font-size:.82rem;text-decoration:none}
-.back:hover,.back:focus-visible,.footer-links a:hover{text-decoration:underline}
-.back:focus-visible,.footer-links a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.footer-links a:hover{text-decoration:underline}
+.footer-links a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 footer{width:100%;border-top:1px solid var(--rule);color:var(--muted);font-size:.72rem}
 .footer-links{display:flex;flex-wrap:wrap;gap:14px 18px}
 .footer-links a{color:var(--ink);text-decoration:none}
@@ -28,9 +26,13 @@ main{width:min(760px,100%);min-height:100vh;margin:0 auto;padding:20px 24px 24px
 .next,.news{max-width:420px;margin-left:auto;margin-right:auto;background:var(--panel);border:0;border-radius:22px;box-shadow:var(--shadow);text-align:left}
 .next{position:relative;margin-top:116px;padding:15px 20px 18px}
 .next[hidden]{display:none}
+.next[hidden]+.news{margin-top:116px}
 .next h2{margin:0 0 6px;font-size:.78rem;font-weight:700}
 .next p{margin:0;font-size:.78rem}
-.news{margin-top:22px;padding:15px 20px 18px;font-family:Arial,Helvetica,sans-serif}
+.info-trigger{position:absolute;top:10px;right:10px;width:30px;height:30px;border:0;border-radius:50%;background:#dce1e4;color:#59636a;font:italic 1rem Arial,Helvetica,sans-serif;cursor:pointer}
+.info-trigger:hover,.info-trigger:focus-visible{background:#cbd2d6}
+.info-trigger:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.news{position:relative;margin-top:22px;padding:15px 20px 18px;font-family:Arial,Helvetica,sans-serif}
 .news h2{margin:0 0 14px;font-size:.78rem}
 .news ul{list-style:none;margin:0;padding:0}
 .news li{display:grid;grid-template-columns:1fr auto;gap:16px;border-top:1px solid #d1d1d1;padding:10px 0}
@@ -40,12 +42,10 @@ main{width:min(760px,100%);min-height:100vh;margin:0 auto;padding:20px 24px 24px
 .news span{color:var(--muted);font-size:.76rem;font-weight:700}
 .update{max-width:420px;margin:20px auto 0;color:var(--muted);font-size:.66rem;text-align:left}
 .home footer{margin:92px auto 0;padding:22px 0 0;text-align:left}
-.home .footer-inner{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start}
-.donations{display:grid;gap:8px;text-align:right}
-.donations p{color:var(--muted);font-size:.66rem}
-.donation-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:14px 18px}
-.donation-links button{padding:0;border:0;background:transparent;color:var(--ink);font:inherit;text-decoration:none;cursor:pointer}
-.donation-links button:hover,.donation-links button:focus-visible{text-decoration:underline}
+.donations{display:grid}
+.donations p{margin-bottom:0}
+.donation-links{display:flex;flex-wrap:wrap;gap:14px 18px}
+.donation-links button{padding:0;border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .modal-backdrop{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:rgba(0,0,0,.32);z-index:10}
 .modal-backdrop[hidden]{display:none}
 .modal{position:relative;width:min(360px,100%);padding:24px;border-radius:18px;background:var(--paper);box-shadow:0 20px 50px rgba(0,0,0,.2);text-align:left}
@@ -73,11 +73,8 @@ body:not(.home) footer{margin:auto auto 0;padding:22px 0 0}
 @media(max-width:640px){
   main{padding-left:18px;padding-right:18px}
   .hero{padding-top:clamp(14vh,18vh,22vh)}
-  .next{margin-top:96px}
+  .next,.next[hidden]+.news{margin-top:96px}
   .news li{grid-template-columns:1fr;gap:4px}
-  .home .footer-inner{grid-template-columns:1fr}
-  .donations{text-align:left}
-  .donation-links{justify-content:flex-start}
   .about{margin-top:clamp(48px,9vh,72px)}
   .footer-inner{flex-direction:column;gap:8px}
 }
