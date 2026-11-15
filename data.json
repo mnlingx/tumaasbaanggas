@@ -7,32 +7,27 @@
     "diesel": -4.1,
     "kerosene": -3.7
   },
-  "forecast": {
-    "date": "Nov 17",
-    "gasoline": -3,
-    "diesel": -4.5,
-    "kerosene": -6
-  },
+  "forecast": null,
   "news": [
     {
+      "source": "GMA News Online",
+      "title": "Pagbabalik-loob ng piso sa P62:$1 dulot ng pagbaba ng presyo ng langis",
+      "url": "https://www.gmanetwork.com/news/money/economy/1009000/peso-claws-back-p62-to-1-level-on-lower-oil-prices/story/"
+    },
+    {
       "source": "Philippine News Agency",
-      "title": "Rollback ng presyo ng gasolina at diesel, ipatutupad sa Nobyembre 10",
+      "title": "Rollback ng presyo ng gasolina at diesel, epektibo Nobyembre 10",
       "url": "https://www.pna.gov.ph/article/up-to-p17l-for-gasoline-p4l-for-diesel-rollback-set-nov-10"
     },
     {
-      "source": "Philippine Star",
-      "title": "Isa pang rollback sa presyo ng langis, inaasahan sa susunod na linggo",
-      "url": "https://www.philstar.com/headlines/2026/11/14/2570008/another-oil-price-rollback-seen-next-week"
+      "source": "GMA News Online",
+      "title": "Malaking rollback sa presyo ng gasolina, diesel, at kerosene, epektibo Nobyembre 10",
+      "url": "https://www.gmanetwork.com/news/money/companies/1008830/oil-price-rollback-for-gasoline-diesel-and-kerosene-effective-tuesday-nov-9/story/"
     },
     {
       "source": "GMA News Online",
-      "title": "Isa pang rollback sa presyo ng langis, inaasahan sa susunod na linggo",
+      "title": "Pagbabalik-loob ng presyo ng langis, inaasahan sa susunod na linggo",
       "url": "https://www.gmanetwork.com/news/money/companies/1009490/oil-price-rollback-on-diesel-gasoline-november-2026/story/"
-    },
-    {
-      "source": "Daily Tribune",
-      "title": "Patuloy na pagbaba ng presyo ng langis, sa kabila ng mga banta sa suplay",
-      "url": "https://tribune.net.ph/amp/story/2026/11/14/fuel-price-freefall-continues-despite-supply-threats"
     }
   ]
 }
