@@ -1,5 +1,5 @@
 {
-  "updated": "Nov 15, 2026",
+  "updated": "Nov 17, 2026",
   "week": "Nov 10–16, 2026",
   "headlineFuel": "gasoline",
   "current": {
@@ -11,23 +11,13 @@
   "news": [
     {
       "source": "GMA News Online",
-      "title": "Pagbabalik-loob ng piso sa P62:$1 dulot ng pagbaba ng presyo ng langis",
-      "url": "https://www.gmanetwork.com/news/money/economy/1009000/peso-claws-back-p62-to-1-level-on-lower-oil-prices/story/"
+      "title": "Muling pagbaba ng presyo ng langis sa Nobyembre 17",
+      "url": "https://www.gmanetwork.com/news/money/economy/1009670/fuel-prices-to-go-down-anew-on-november-17/story/"
     },
     {
       "source": "Philippine News Agency",
-      "title": "Rollback ng presyo ng gasolina at diesel, epektibo Nobyembre 10",
-      "url": "https://www.pna.gov.ph/article/up-to-p17l-for-gasoline-p4l-for-diesel-rollback-set-nov-10"
-    },
-    {
-      "source": "GMA News Online",
-      "title": "Malaking rollback sa presyo ng gasolina, diesel, at kerosene, epektibo Nobyembre 10",
-      "url": "https://www.gmanetwork.com/news/money/companies/1008830/oil-price-rollback-for-gasoline-diesel-and-kerosene-effective-tuesday-nov-9/story/"
-    },
-    {
-      "source": "GMA News Online",
-      "title": "Pagbabalik-loob ng presyo ng langis, inaasahan sa susunod na linggo",
-      "url": "https://www.gmanetwork.com/news/money/companies/1009490/oil-price-rollback-on-diesel-gasoline-november-2026/story/"
+      "title": "Muling pagbaba ng presyo ng langis ngayong linggo",
+      "url": "https://www.pna.gov.ph/article/fuel-prices-down-anew-this-week"
     }
   ]
 }
