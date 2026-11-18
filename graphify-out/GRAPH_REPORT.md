@@ -1,17 +1,17 @@
-# Graph Report - tumaasbaanggas  (2026-11-15)
+# Graph Report - tumaasbaanggas  (2026-11-18)
 
 ## Corpus Check
-- 7 files · ~2,702 words
+- 8 files · ~3,022 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
+- Unclassified: 5 file(s) not represented in the graph (top: (none) 2, .example 1, .css 1)
 
 ## Summary
-- 89 nodes · 95 edges · 8 communities (7 shown, 1 thin omitted)
+- 98 nodes · 103 edges · 9 communities (8 shown, 1 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b3503556`
+- Built from commit: `a6b0950e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,18 +23,19 @@
 - Workflow Configuration
 - CI Update Execution
 - CI Runtime Setup
+- Tumaas ba ang gas?
 
 ## God Nodes (most connected - your core abstractions)
-1. `render()` - 7 edges
-2. `steps` - 6 edges
+1. `Tumaas ba ang gas?` - 8 edges
+2. `render()` - 7 edges
 3. `steps` - 6 edges
-4. `Privacy Policy` - 6 edges
-5. `Fuel Price Home Page` - 5 edges
-6. `About Page` - 4 edges
-7. `news` - 3 edges
-8. `update` - 3 edges
-9. `on` - 3 edges
-10. `update` - 3 edges
+4. `steps` - 6 edges
+5. `Privacy Policy` - 6 edges
+6. `Fuel Price Home Page` - 5 edges
+7. `About Page` - 4 edges
+8. `news` - 3 edges
+9. `update` - 3 edges
+10. `on` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Privacy Contact Email` --semantically_similar_to--> `Feedback Email`  [INFERRED] [semantically similar]
@@ -55,7 +56,7 @@
 - **Site Page Navigation** — index_home_page, about_about_page, privacy_privacy_policy [EXTRACTED 1.00]
 - **Privacy and Donation Flow** — index_donations, index_donation_qr_dialog, privacy_external_services [INFERRED 0.85]
 
-## Communities (8 total, 1 thin omitted)
+## Communities (9 total, 1 thin omitted)
 
 ### Community 0 - "Fuel Data Updater"
 Cohesion: 0.11
@@ -85,21 +86,25 @@ Nodes (8): OPENAI_API_KEY, env, name, run, uses, with, steps, node-version
 Cohesion: 0.25
 Nodes (8): OPENAI_API_KEY, env, name, run, uses, with, steps, node-version
 
+### Community 8 - "Tumaas ba ang gas?"
+Cohesion: 0.22
+Nodes (8): Open for contributions, Purpose, Refresh fuel data, Run locally, Scope, Search engine optimization, Target audience, Tumaas ba ang gas?
+
 ## Knowledge Gaps
 - **3 isolated node(s):** `Donation QR Dialog`, `Oil Price References`, `No Cookies or Tracking`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 49 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 57 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `steps` connect `CI Update Execution` to `Workflow Structure`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `Donation QR Dialog`, `Oil Price References`, `No Cookies or Tracking` to the rest of the system?**
   _3 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Fuel Data Updater` be split into smaller, more focused modules?**
   _Cohesion score 0.11052631578947368 - nodes in this community are weakly interconnected._
 - **Why does `steps` connect `CI Runtime Setup` to `Workflow Configuration`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Why does `update` connect `Workflow Structure` to `CI Update Execution`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
