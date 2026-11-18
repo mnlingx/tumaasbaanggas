@@ -23,8 +23,8 @@
       <div class="donations" aria-label="Donations">
         <p>Donations are welcome to keep the website yours truly.</p>
         <div class="donation-links">
-          <button type="button" data-qr-title="PayPal" data-qr-src="assets/paypal-qr.png">PayPal</button>
-          <button type="button" data-qr-title="GCash" data-qr-src="assets/gcash-qr.png">GCash</button>
+          <button type="button" data-qr-title="PayPal" data-qr-recipient="A**ED IN***I OBS***IO" data-qr-src="assets/paypal-qr.PNG">PayPal</button>
+          <button type="button" data-qr-title="GCash" data-qr-recipient="AH**D O." data-qr-src="assets/gcash-qr.png">GCash</button>
         </div>
       </div>
     </div>
@@ -42,9 +42,10 @@
   </footer>
 </main>
 <div class="modal-backdrop" id="qr-modal" hidden>
-  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" aria-describedby="qr-modal-recipient">
     <button class="modal-close" id="qr-modal-close" type="button" aria-label="Isara ang QR code">×</button>
     <h2 id="qr-modal-title"></h2>
+    <p id="qr-modal-recipient"></p>
     <p>I-scan ang QR code para mag-donate.</p>
     <img class="qr-image" id="qr-modal-image" src="" alt="">
   </section>

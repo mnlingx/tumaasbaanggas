@@ -1,17 +1,17 @@
 # Graph Report - tumaasbaanggas  (2026-11-18)
 
 ## Corpus Check
-- 8 files · ~3,022 words
+- 8 files · ~2,994 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 5 file(s) not represented in the graph (top: (none) 2, .example 1, .css 1)
 
 ## Summary
-- 98 nodes · 103 edges · 9 communities (8 shown, 1 thin omitted)
+- 97 nodes · 102 edges · 9 communities (8 shown, 1 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a6b0950e`
+- Built from commit: `be194da2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,8 +26,8 @@
 - Tumaas ba ang gas?
 
 ## God Nodes (most connected - your core abstractions)
-1. `Tumaas ba ang gas?` - 8 edges
-2. `render()` - 7 edges
+1. `render()` - 7 edges
+2. `Tumaas ba ang gas?` - 7 edges
 3. `steps` - 6 edges
 4. `steps` - 6 edges
 5. `Privacy Policy` - 6 edges
@@ -87,12 +87,12 @@ Cohesion: 0.25
 Nodes (8): OPENAI_API_KEY, env, name, run, uses, with, steps, node-version
 
 ### Community 8 - "Tumaas ba ang gas?"
-Cohesion: 0.22
-Nodes (8): Open for contributions, Purpose, Refresh fuel data, Run locally, Scope, Search engine optimization, Target audience, Tumaas ba ang gas?
+Cohesion: 0.25
+Nodes (7): Purpose, Refresh fuel data, Run locally, Scope, Search engine optimization, Target audience, Tumaas ba ang gas?
 
 ## Knowledge Gaps
 - **3 isolated node(s):** `Donation QR Dialog`, `Oil Price References`, `No Cookies or Tracking`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 57 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 56 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -107,4 +107,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `steps` connect `CI Runtime Setup` to `Workflow Configuration`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Why does `update` connect `Workflow Structure` to `CI Update Execution`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._

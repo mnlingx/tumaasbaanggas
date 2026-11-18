@@ -99,6 +99,7 @@ const qrModal = document.getElementById("qr-modal");
 if (qrModal) {
   const qrModalClose = document.getElementById("qr-modal-close");
   const qrModalTitle = document.getElementById("qr-modal-title");
+  const qrModalRecipient = document.getElementById("qr-modal-recipient");
   const qrModalImage = document.getElementById("qr-modal-image");
   function closeQrModal() {
     qrModal.hidden = true;
@@ -111,6 +112,7 @@ if (qrModal) {
   document.querySelectorAll("[data-qr-src]").forEach(button => {
     button.addEventListener("click", () => {
       qrModalTitle.textContent = button.dataset.qrTitle;
+      qrModalRecipient.textContent = `Recipient: ${button.dataset.qrRecipient}`;
       qrModalImage.src = button.dataset.qrSrc;
       qrModalImage.alt = button.dataset.qrTitle + " QR code";
       qrModal.hidden = false;
