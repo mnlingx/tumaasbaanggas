@@ -1,23 +1,38 @@
 {
-  "updated": "Nov 17, 2026",
-  "week": "Nov 10–16, 2026",
+  "updated": "Nov 21, 2026",
+  "week": "Nov 17–23, 2026",
   "headlineFuel": "gasoline",
   "current": {
-    "gasoline": -16.8,
-    "diesel": -4.1,
-    "kerosene": -3.7
+    "gasoline": -1.5,
+    "diesel": -3.8,
+    "kerosene": -5.8
   },
-  "forecast": null,
+  "forecast": {
+    "date": "Nov 24",
+    "gasoline": -2.47,
+    "diesel": -2.67,
+    "kerosene": -1.88
+  },
   "news": [
     {
-      "source": "GMA News Online",
-      "title": "Muling pagbaba ng presyo ng langis sa Nobyembre 17",
-      "url": "https://www.gmanetwork.com/news/money/economy/1009670/fuel-prices-to-go-down-anew-on-november-17/story/"
+      "source": "Philstar.com",
+      "title": "Patuloy na pagbaba ng presyo ng gasolina at diesel sa susunod na linggo",
+      "url": "https://www.philstar.com/business/2026/11/20/2571437/fuel-prices-seen-drop-p2-liter-next-week"
     },
     {
-      "source": "Philippine News Agency",
-      "title": "Muling pagbaba ng presyo ng langis ngayong linggo",
-      "url": "https://www.pna.gov.ph/article/fuel-prices-down-anew-this-week"
+      "source": "Philstar.com",
+      "title": "Pagbaba ng presyo ng gasolina at diesel sa susunod na linggo, ayon sa DOE",
+      "url": "https://www.philstar.com/business/2026/11/13/2569887/more-fuel-price-rollbacks-expected-next-week"
+    },
+    {
+      "source": "Philstar.com",
+      "title": "Malaking rollback sa presyo ng gasolina at diesel sa susunod na linggo",
+      "url": "https://www.philstar.com/headlines/2026/11/07/2568423/pump-price-rollback-p13-gas-p4-diesel"
+    },
+    {
+      "source": "Philstar.com",
+      "title": "Pagtaas ng presyo ng gasolina ng P3.50 kada litro sa kabila ng mga panganib sa langis",
+      "url": "https://www.philstar.com/headlines/2026/11/02/2568423/pump-price-rollback-p13-gas-p4-diesel"
     }
   ]
 }
