@@ -1,0 +1,86 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1794714897.8423016,
+    "seen": 1794970158.094094,
+    "ast_hash": "005ac71c84af2cae38e255e2b9de2411",
+    "semantic_hash": "005ac71c84af2cae38e255e2b9de2411"
+  },
+  ".github/workflows/update.yml": {
+    "mtime": 1794664930.9475079,
+    "seen": 1794665672.9333,
+    "ast_hash": "1fb1960050a4fea6fbd00a751dcb9241",
+    "semantic_hash": "1fb1960050a4fea6fbd00a751dcb9241"
+  },
+  "data.json": {
+    "mtime": 1794969573.1555693,
+    "seen": 1794970158.0941,
+    "ast_hash": "29e941192d275e0ba786c09f2f97c8ae",
+    "semantic_hash": ""
+  },
+  "index.js": {
+    "mtime": 1794989940.11775,
+    "seen": 1794989940.684078,
+    "ast_hash": "51814b68f70804e9f927ad7f6635db36",
+    "semantic_hash": ""
+  },
+  "update.mjs": {
+    "mtime": 1794236948.0650663,
+    "seen": 1794665672.933303,
+    "ast_hash": "b1359fc36678ac67e58a6b52212b0de9",
+    "semantic_hash": "b1359fc36678ac67e58a6b52212b0de9"
+  },
+  "update.yml": {
+    "mtime": 1794056021.1071494,
+    "seen": 1794665672.933303,
+    "ast_hash": "679d8280b9046b562e334e685298fa18",
+    "semantic_hash": "679d8280b9046b562e334e685298fa18"
+  },
+  "AGENTS.md": {
+    "mtime": 1794714897.8457904,
+    "seen": 1794970158.094104,
+    "ast_hash": "f36539ecc9af68f33ebd72770ce4a19e",
+    "semantic_hash": "f36539ecc9af68f33ebd72770ce4a19e"
+  },
+  "about.html": {
+    "mtime": 1794989940.1175365,
+    "seen": 1794989940.684146,
+    "ast_hash": "91fe97126b16ebe748744247a41a9754",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1794989520.074844,
+    "seen": 1794989940.684147,
+    "ast_hash": "60c2915ce44f950815ab984879d1fa35",
+    "semantic_hash": ""
+  },
+  "privacy.html": {
+    "mtime": 1794989520.075442,
+    "seen": 1794989940.684148,
+    "ast_hash": "4307baf158995098a3334f57820cfd74",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794989520.0677428,
+    "seen": 1794989940.684146,
+    "ast_hash": "1f2ad13ce0602bee60f7ea5be74d3589",
+    "semantic_hash": ""
+  },
+  "robots.txt": {
+    "mtime": 1794989520.0757418,
+    "seen": 1794989940.684148,
+    "ast_hash": "39ff2e3821eb90a15bae409f82f9202f",
+    "semantic_hash": ""
+  },
+  "assets/gcash-qr.png": {
+    "mtime": 1794989013.9269974,
+    "seen": 1794989940.684149,
+    "ast_hash": "1f687dd05fad3aec2b831fd20dba1b60",
+    "semantic_hash": ""
+  },
+  "assets/paypal-qr.PNG": {
+    "mtime": 1794988838.446847,
+    "seen": 1794989940.68415,
+    "ast_hash": "c11aeaea537fc1ba41180c194cea3252",
+    "semantic_hash": ""
+  }
+}

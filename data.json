@@ -1,11 +1,12 @@
 {
   "updated": "Nov 21, 2026",
   "week": "Nov 17–23, 2026",
+  "effectiveDate": "2026-11-17",
   "headlineFuel": "gasoline",
   "current": {
-    "gasoline": -1.5,
-    "diesel": -3.8,
-    "kerosene": -5.8
+    "gasoline": -16.8,
+    "diesel": -4.1,
+    "kerosene": -3.7
   },
   "forecast": {
     "date": "Nov 24",

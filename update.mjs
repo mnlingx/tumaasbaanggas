@@ -29,6 +29,7 @@ const TRUSTED_DOMAINS = [
 ];
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const FUELS = ["gasoline", "diesel", "kerosene"];
+const ok = n => typeof n === "number" && Number.isFinite(n) && Math.abs(n) <= 25;
 
 // Petsa ngayon sa oras ng Pilipinas (UTC+8)
 const todayISO = process.env.TODAY_ISO || new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
@@ -45,6 +46,11 @@ function weekLabel(iso) {
   const [bm, bd, by] = [e.getUTCMonth(), e.getUTCDate(), e.getUTCFullYear()];
   return am === bm ? `${MONTHS[am]} ${ad}–${bd}, ${by}` : `${MONTHS[am]} ${ad}–${MONTHS[bm]} ${bd}, ${by}`;
 }
+
+const currentForWeek = (old, raw) =>
+  old.effectiveDate === raw.weekStart && FUELS.every(k => ok(old.current?.[k]))
+    ? old.current
+    : raw.current;
 
 function canonicalNewsUrl(rawUrl) {
   try {
@@ -72,6 +78,20 @@ if (process.env.SELF_TEST) {
   console.assert(
     canonicalNewsUrl("https://qa.philstar.com/business/story/amp/") === "https://philstar.com/business/story",
     "canonicalNewsUrl removes qa host and amp suffix"
+  );
+  console.assert(
+    currentForWeek(
+      { effectiveDate: "2026-11-17", current: { gasoline: -16.8, diesel: -4.1, kerosene: -3.7 } },
+      { weekStart: "2026-11-17", current: { gasoline: -1.5, diesel: -3.8, kerosene: -5.8 } }
+    ).gasoline === -16.8,
+    "current adjustment stays fixed during its effective week"
+  );
+  console.assert(
+    currentForWeek(
+      { effectiveDate: "2026-11-17", current: { gasoline: -16.8, diesel: -4.1, kerosene: -3.7 } },
+      { weekStart: "2026-11-24", current: { gasoline: -2.47, diesel: -2.67, kerosene: -1.88 } }
+    ).gasoline === -2.47,
+    "current adjustment changes on the next effective Tuesday"
   );
   process.exit(0);
 }
@@ -121,7 +141,6 @@ if (a < 0 || b < 0) throw new Error("Walang JSON sa sagot:\n" + text);
 const raw = JSON.parse(text.slice(a, b + 1));
 
 // --- Pagsusuri: huwag isulat ang kakaibang datos ---
-const ok = n => typeof n === "number" && Number.isFinite(n) && Math.abs(n) <= 25;
 if (!FUELS.every(k => ok(raw.current?.[k]))) {
   throw new Error("Hindi tama ang mga numero: " + JSON.stringify(raw.current));
 }
@@ -153,8 +172,9 @@ const news = (raw.news || [])
 const out = {
   updated: `${label(todayISO)}, ${todayISO.slice(0, 4)}`,
   week: weekLabel(raw.weekStart),
+  effectiveDate: raw.weekStart,
   headlineFuel: old.headlineFuel || "gasoline",
-  current: Object.fromEntries(FUELS.map(k => [k, raw.current[k]])),
+  current: currentForWeek(old, raw),
   forecast,
   news: news.length ? news : old.news || [],
 };

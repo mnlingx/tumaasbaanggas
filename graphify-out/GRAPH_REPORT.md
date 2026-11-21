@@ -1,17 +1,17 @@
-# Graph Report - tumaasbaanggas  (2026-11-18)
+# Graph Report - tumaasbaanggas  (2026-11-21)
 
 ## Corpus Check
-- 8 files · ~2,994 words
+- 8 files · ~3,151 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 5 file(s) not represented in the graph (top: (none) 2, .example 1, .css 1)
 
 ## Summary
-- 97 nodes · 102 edges · 9 communities (8 shown, 1 thin omitted)
+- 98 nodes · 104 edges · 9 communities (8 shown, 1 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `be194da2`
+- Built from commit: `a241e029`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,7 +60,7 @@
 
 ### Community 0 - "Fuel Data Updater"
 Cohesion: 0.11
-Nodes (13): a, API_KEY, b, canonicalNewsUrl(), FUELS, MONTHS, news, old (+5 more)
+Nodes (15): a, API_KEY, b, canonicalNewsUrl(), currentForWeek(), FUELS, MONTHS, news (+7 more)
 
 ### Community 1 - "Frontend Interaction"
 Cohesion: 0.19
@@ -92,7 +92,7 @@ Nodes (7): Purpose, Refresh fuel data, Run locally, Scope, Search engine optimiz
 
 ## Knowledge Gaps
 - **3 isolated node(s):** `Donation QR Dialog`, `Oil Price References`, `No Cookies or Tracking`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 56 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 55 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -103,8 +103,8 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `Donation QR Dialog`, `Oil Price References`, `No Cookies or Tracking` to the rest of the system?**
   _3 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Fuel Data Updater` be split into smaller, more focused modules?**
-  _Cohesion score 0.11052631578947368 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10952380952380952 - nodes in this community are weakly interconnected._
 - **Why does `steps` connect `CI Runtime Setup` to `Workflow Configuration`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Why does `update` connect `Workflow Structure` to `CI Update Execution`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
